@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>List of customers</title>
+  </head>
+  <body>
+    <style>
+      td {
+        width: 150px;
+        text-align: center;
+        border: 1px solid black;
+        padding: 5px;
+      }
+    </style>
+
+    <p><a href="{{ url_for('.add_user_view') }}"> Add User </a></p>
+    <p>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+      {% endwith %}
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Customer ID</th>
+          <th>email</th>
+          <th>phone</th>
+          <th>delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data %}
+        <tr>
+          <td>{{row[0]}}</td>
+          <td>{{row[3]}}</td>
+          <td>{{row[4]}}</td>
+          <td><a href="{{ url_for('delete_user', id=row[0]) }}">delete</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

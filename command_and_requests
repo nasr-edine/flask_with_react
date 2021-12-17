@@ -1,0 +1,17 @@
+docker exec -it php-apache bash -l  
+docker build . 
+docker exec -it web bash -l  
+
+
+CREATE TABLE `customers` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`first_name` VARCHAR(255),
+	`last_name` VARCHAR(255),
+	`email` VARCHAR(70),
+	`phone` VARCHAR(20),
+	PRIMARY KEY (`id`)
+);
+
+apt-get install python3
+display os version
+cat /etc/os-release
